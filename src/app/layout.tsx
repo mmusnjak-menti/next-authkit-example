@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import NextLink from "next/link";
 import { Theme, Card, Container, Flex, Button, Box } from "@radix-ui/themes";
 import { Footer } from "./components/footer";
+import { OrganizationSwitcherWidget } from "./components/organization-switcher";
 import { SignInButton } from "./components/sign-in-button";
 import {
   AuthKitProvider,
@@ -46,9 +47,42 @@ export default function RootLayout({
                             <Button asChild variant="soft">
                               <NextLink href="/account">Account</NextLink>
                             </Button>
+
+                            <Button asChild variant="soft">
+                              <NextLink href="/me/profile">Profile</NextLink>
+                            </Button>
+
+                            <Button asChild variant="soft">
+                              <NextLink href="/manage/users">
+                                Manage users
+                              </NextLink>
+                            </Button>
+
+                            <Button asChild variant="soft">
+                              <NextLink href="/manage/domain">
+                                Domain
+                              </NextLink>
+                            </Button>
+
+                            <Button asChild variant="soft">
+                              <NextLink href="/manage/sessions">
+                                Sessions
+                              </NextLink>
+                            </Button>
+
+                            <Button asChild variant="soft">
+                              <NextLink href="/manage/sso">SSO</NextLink>
+                            </Button>
+
+                            <Button asChild variant="soft">
+                              <NextLink href="/manage/sync">Sync</NextLink>
+                            </Button>
                           </Flex>
 
-                          <SignInButton />
+                          <Flex gap="3" align="center">
+                            <OrganizationSwitcherWidget />
+                            <SignInButton />
+                          </Flex>
                         </header>
                       </Flex>
 

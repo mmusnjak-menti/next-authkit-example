@@ -1,6 +1,7 @@
-import { authkitMiddleware } from "@workos-inc/authkit-nextjs";
+// proxy.ts (Next.js 16+)
+import { authkitProxy } from '@workos-inc/authkit-nextjs';
 
-export default authkitMiddleware();
+export default authkitProxy();
 
 // Match against the pages
 export const config = {

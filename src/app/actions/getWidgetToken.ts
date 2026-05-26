@@ -11,7 +11,7 @@ export async function getUsersManagementWidgetToken(): Promise<string> {
     );
   }
 
-  return getWorkOS().widgets.getToken({
+  return getWorkOS().widgets.createToken({
     organizationId,
     userId: user.id,
     scopes: ["widgets:users-table:manage"],
@@ -27,7 +27,7 @@ export async function getDomainVerificationWidgetToken(): Promise<string> {
     );
   }
 
-  return getWorkOS().widgets.getToken({
+  return getWorkOS().widgets.createToken({
     organizationId,
     userId: user.id,
     scopes: ["widgets:domain-verification:manage"],
@@ -43,7 +43,7 @@ export async function getSsoConnectionWidgetToken(): Promise<string> {
     );
   }
 
-  return getWorkOS().widgets.getToken({
+  return getWorkOS().widgets.createToken({
     organizationId,
     userId: user.id,
     scopes: ["widgets:sso:manage"],
@@ -59,12 +59,9 @@ export async function getDirectorySyncWidgetToken(): Promise<string> {
     );
   }
 
-  return getWorkOS().widgets.getToken({
+  return getWorkOS().widgets.createToken({
     organizationId,
     userId: user.id,
-    scopes: [
-      // @ts-expect-error - SDK 7.75.1's WidgetScope union is missing "widgets:dsync:manage"; the API accepts it per the docs.
-      "widgets:dsync:manage",
-    ],
+    scopes: ["widgets:dsync:manage"],
   });
 }

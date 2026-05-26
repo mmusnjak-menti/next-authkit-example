@@ -27,7 +27,7 @@ export default async function AccountPage() {
       {userFields && (
         <Flex direction="column" justify="center" gap="3" width="400px">
           {userFields.map(([label, value]) => (
-            <Flex asChild align="center" gap="6" key={String(value)}>
+            <Flex asChild align="center" gap="6" key={String(label)}>
               <label>
                 <Text weight="bold" size="3" style={{ width: 100 }}>
                   {label}

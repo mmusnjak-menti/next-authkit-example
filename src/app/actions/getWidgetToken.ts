@@ -11,11 +11,12 @@ export async function getUsersManagementWidgetToken(): Promise<string> {
     );
   }
 
-  return getWorkOS().widgets.createToken({
+  const { token } = await getWorkOS().widgets.createToken({
     organizationId,
     userId: user.id,
     scopes: ["widgets:users-table:manage"],
   });
+  return token;
 }
 
 export async function getDomainVerificationWidgetToken(): Promise<string> {
@@ -27,11 +28,12 @@ export async function getDomainVerificationWidgetToken(): Promise<string> {
     );
   }
 
-  return getWorkOS().widgets.createToken({
+  const { token } = await getWorkOS().widgets.createToken({
     organizationId,
     userId: user.id,
     scopes: ["widgets:domain-verification:manage"],
   });
+  return token;
 }
 
 export async function getSsoConnectionWidgetToken(): Promise<string> {
@@ -43,11 +45,12 @@ export async function getSsoConnectionWidgetToken(): Promise<string> {
     );
   }
 
-  return getWorkOS().widgets.createToken({
+  const { token } = await getWorkOS().widgets.createToken({
     organizationId,
     userId: user.id,
     scopes: ["widgets:sso:manage"],
   });
+  return token;
 }
 
 export async function getDirectorySyncWidgetToken(): Promise<string> {
@@ -59,9 +62,10 @@ export async function getDirectorySyncWidgetToken(): Promise<string> {
     );
   }
 
-  return getWorkOS().widgets.createToken({
+  const { token } = await getWorkOS().widgets.createToken({
     organizationId,
     userId: user.id,
     scopes: ["widgets:dsync:manage"],
   });
+  return token;
 }

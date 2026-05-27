@@ -3,7 +3,9 @@ import { Flex, Heading, Text } from "@radix-ui/themes";
 import { SsoConnectionWidget } from "./sso-connection-widget";
 
 export default async function ManageSsoPage() {
-  const { organizationId } = await withAuth({ ensureSignedIn: true });
+  const { organizationId, role } = await withAuth({ ensureSignedIn: true });
+
+  const hasAccess = role === "superadmin";
 
   return (
     <Flex direction="column" gap="5" width="800px">
@@ -17,12 +19,17 @@ export default async function ManageSsoPage() {
         </Text>
       </Flex>
 
-      {organizationId ? (
-        <SsoConnectionWidget />
-      ) : (
+      {!organizationId ? (
         <Text align="center" color="gray">
           Sign in to an organization to configure its SSO connection.
         </Text>
+      ) : !hasAccess ? (
+        <Text align="center" color="red">
+          You don&apos;t have permission to manage SSO connections. This page
+          requires the superadmin role.
+        </Text>
+      ) : (
+        <SsoConnectionWidget />
       )}
     </Flex>
   );
